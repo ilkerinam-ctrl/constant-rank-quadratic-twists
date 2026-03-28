@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+title: "Constant-Rank Quadratic Twist Families via Frey’s Table and Waldspurger’s Theorem"
+message: "If you use this repository, please cite the associated paper."
+authors:
+  - family-names: "Lee"
+    given-names: "Seungjae"
+  - family-names: "Inam"
+    given-names: "Ilker"
