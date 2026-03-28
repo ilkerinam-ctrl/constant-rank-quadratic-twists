@@ -1,105 +1,80 @@
-# constant-rank-quadratic-twists
-Magma code for constructing and verifying rank-1 quadratic twist families via Frey’s table and Waldspurger’s theorem.
+# Quadratic Twists of Rank One via Frey’s Table and Waldspurger’s Theorem
 
-# Constant-Rank Quadratic Twist Families via Frey’s Table and Waldspurger’s Theorem
+This repository contains the Magma code accompanying the paper:
 
-This repository contains the Magma code used to support the computational examples appearing in the paper
-
-**Seungjae Lee and Ilker Inam**
-*Constant-Rank Quadratic Twist Families via Frey’s Table and Waldspurger’s Theorem*
+**Quadratic Twists of Rank One via Frey’s Table and Waldspurger’s Theorem**
+Seungjae Lee and İlker İnam
 
 ---
 
 ## Authors
 
-* **Seungjae Lee**
-  Kyungpook National University, Institute for Mathematical Convergence, Daegu, South Korea
-  [seungjae@knu.ac.kr](mailto:seungjae@knu.ac.kr)
+**Seungjae Lee**
+Kyungpook National University
+Institute for Mathematical Convergence
+Daegu, South Korea
+Email: [seungjae@knu.ac.kr](mailto:seungjae@knu.ac.kr)
 
-* **Ilker Inam**
-  Bilecik Seyh Edebali University, Department of Mathematics, 11200 Bilecik, Turkey
-  [ilker.inam@gmail.com](mailto:ilker.inam@gmail.com)
-  [ilker.inam@bilecik.edu.tr](mailto:ilker.inam@bilecik.edu.tr)
-
----
-
-## Purpose of this repository
-
-The main goal of this repository is computational reproducibility. In particular, it provides:
-
-* the list of selected Frey elliptic curves considered in the paper,
-* the corresponding square-free twist parameters (d_0) appearing in Table 1,
-* Magma scripts for checking the conductor, root number, and analytic rank of the quadratic twists,
-* scripts for exploring additional square-free twists in the same congruence classes.
-
-This repository is intended to support the computational aspect of the paper.
-It does **not** replace the theoretical arguments in the article.
+**İlker İnam**
+Bilecik Şeyh Edebali University
+Department of Mathematics
+11200 Bilecik, Turkey
+Email: [ilker.inam@gmail.com](mailto:ilker.inam@gmail.com)
+Email: [ilker.inam@bilecik.edu.tr](mailto:ilker.inam@bilecik.edu.tr)
 
 ---
 
-## Repository structure
+## Description
 
-```
-constant-rank-quadratic-twists/
-├── README.md
-├── LICENSE
-├── CITATION.cff
-├── magma/
-│   ├── frey_table_data.m
-│   ├── verify_frey_table.m
-│   ├── search_rank1_family.m
-│   └── utilities.m
-├── output/
-│   └── .gitkeep
-└── paper/
-    └── LI-Paper-2026.pdf
-```
+This repository provides computational data and Magma scripts for studying quadratic twists of elliptic curves arising from Frey’s table.
+
+The main goal is to identify squarefree integers ( d ) such that the quadratic twists ( E^{(d)} ) have analytic rank one, and to investigate their distribution within residue classes modulo ( 4N ).
 
 ---
 
-## Software requirements
+## Repository Structure
 
-The scripts were written for Magma and assume that elliptic curves can be accessed via their Cremona labels, for example:
-
-```
-E := EllipticCurve("11a1");
-```
-
-If your Magma installation uses a different interface, you may need to adapt this line.
+* `data/` — cleaned Frey table used in the paper
+* `src/` — Magma scripts for searching and verifying rank-one twists
+* `output/` — generated computational results
+* `paper/` — LaTeX source files of the manuscript
 
 ---
 
-## How to verify Table 1
+## Usage
 
-From within Magma, run:
-
-```
-load "magma/verify_frey_table.m";
-```
-
-This script checks each curve in the table and computes the analytic rank of each listed quadratic twist.
-
----
-
-## How to search for additional twists
-
-To search for further square-free twists in the same congruence classes modulo (4N), run:
+Load the cleaned table:
 
 ```
-load "magma/search_rank1_family.m";
+load "data/frey_table_clean.m";
 ```
 
-This script searches through a prescribed range and records twists with analytic rank (1).
+Run the search script:
+
+```
+load "src/search_rank1_twists.m";
+```
 
 ---
 
 ## Notes
 
-The phrase “Verified in Magma” in Table 1 means that the listed examples were checked computationally using the scripts in this repository.
-The current scripts print their results to the Magma console.  
-If desired, they can easily be adapted to write the output to text files in the `output/` directory.
+* Only squarefree twist parameters are considered
+* Computations are performed within a finite search bound
+* The behavior is **non-uniform**:
+
+  * some curves admit many rank-one twists
+  * some admit only a few
+  * some (e.g. 49a1, 98a1) produce none within the tested range
+
 ---
 
-## Citation
+## Remark
 
-If you use these computations, please cite the associated paper.
+The computations illustrate that the existence of rank-one quadratic twists is closely related to the non-vanishing of Fourier coefficients appearing in Waldspurger’s formula.
+
+---
+
+## License
+
+This project is released for academic and research use.
