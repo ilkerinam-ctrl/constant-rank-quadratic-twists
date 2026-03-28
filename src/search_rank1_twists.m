@@ -5,35 +5,10 @@
 ///////////////////////////////////////////////////////////////////////////
 
 
-// ======================= LOAD DATA =======================
+// ======================= LOAD FILES =======================
 
 load "../data/frey_table_clean.m";
-
-
-// ======================= UTILITIES =======================
-
-function IsSquarefreeInteger(n)
-    if n eq 0 then
-        return false;
-    end if;
-
-    fac := Factorization(Abs(n));
-    for t in fac do
-        if t[2] ge 2 then
-            return false;
-        end if;
-    end for;
-
-    return true;
-end function;
-
-function SafeAnalyticRank(E)
-    try
-        return AnalyticRank(E);
-    catch e
-        return -1;
-    end try;
-end function;
+load "utils.m";
 
 
 // ======================= PARAMETERS =======================
@@ -43,9 +18,7 @@ SEARCH_BOUND := 40;
 
 // ======================= MAIN LOOP =======================
 
-print "------------------------------------------------------------";
-print "Search for rank-1 quadratic twists";
-print "------------------------------------------------------------";
+PrintHeader("Search for rank-1 quadratic twists");
 
 for entry in FreyTable do
 
@@ -56,9 +29,13 @@ for entry in FreyTable do
     N := Conductor(E);
     M := 4*N;
 
-    print "------------------------------------------------------------";
-    print "Curve", label, " (modulus 4N =", M, ")";
-    print "------------------------------------------------------------";
+    PrintHeader("Curve " cat label cat " (modulus 4N = " cat IntegerToString(M) cat ")");
+
+    if #twists eq 0 then
+        print "No starting representatives recorded for this curve.";
+        print "";
+        continue;
+    end if;
 
     for d0 in twists do
 
@@ -91,6 +68,4 @@ for entry in FreyTable do
 
 end for;
 
-print "------------------------------------------------------------";
-print "Search completed";
-print "------------------------------------------------------------";
+PrintHeader("Search completed");
