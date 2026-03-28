@@ -1,9 +1,10 @@
 # Quadratic Twists of Rank One via Frey’s Table and Waldspurger’s Theorem
 
-This repository contains Magma code accompanying the paper:
+This repository contains Magma code accompanying the paper
 
 **Quadratic Twists of Rank One via Frey’s Table and Waldspurger’s Theorem**
-Seungjae Lee and İlker İnam
+
+by **Seungjae Lee** and **Ilker Inam**.
 
 ---
 
@@ -15,8 +16,8 @@ Institute for Mathematical Convergence
 Daegu, South Korea
 Email: [seungjae@knu.ac.kr](mailto:seungjae@knu.ac.kr)
 
-**İlker İnam**
-Bilecik Şeyh Edebali University
+**Ilker Inam**
+Bilecik Seyh Edebali University
 Department of Mathematics
 11200 Bilecik, Turkey
 Email: [ilker.inam@gmail.com](mailto:ilker.inam@gmail.com)
@@ -28,8 +29,7 @@ Email: [ilker.inam@bilecik.edu.tr](mailto:ilker.inam@bilecik.edu.tr)
 
 This repository provides computational data and Magma scripts for studying quadratic twists of elliptic curves arising from Frey’s table.
 
-The main goal is to identify squarefree integers ( d ) such that the quadratic twists ( E^{(d)} ) have analytic rank one, and to investigate their distribution within residue classes modulo ( 4N ).
-
+The main goal is to identify squarefree integers `d` such that the quadratic twists `E^(d)` have analytic rank one, and to investigate their distribution within residue classes modulo `4N`.
 ---
 
 ## Repository Structure
